@@ -1,0 +1,21 @@
+<launch>
+
+
+  <!-- iniciamos moveit -->
+
+  <include file="$(find oscar_config)/launch/Demo.launch">
+  </include>
+
+  <!-- iniciamos la camara usb -->
+
+  <include file="$(find arduino_Thor)/launch/camara.launch">
+  </include>
+
+  <!-- iniciamos los nodos de comuniacion al arduino -->
+  <node pkg="arduino_Thor" type="joints_step_node_thor1" name="steps_to_Thor1">
+  <node pkg="arduino_Thor" type="joints_step_node_thor2" name="steps_to_Thor2">
+
+    <!-- iniciamos el sistema de vision -->
+    <node pkg="arduino_Thor" type="vision" name="vision_node">
+
+</launch>
