@@ -1,0 +1,32 @@
+controller_list:
+  - name: fake_Thor1_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - Thor1_Joint1
+      - Thor1_Joint2
+      - Thor1_Joint3
+      - Thor1_Joint4
+      - Thor1_Joint5
+      - Thor1_Joint6
+  - name: fake_Thor2_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - Thor2_Joint1
+      - Thor2_Joint2
+      - Thor2_Joint3
+      - Thor2_Joint4
+      - Thor2_Joint5
+      - Thor2_Joint6
+  - name: fake_GripperThor1_controller
+    type: $(arg fake_execution_type)
+    joints:
+      []
+  - name: fake_GripperThor2_controller
+    type: $(arg fake_execution_type)
+    joints:
+      []
+initial:  # Define initial robot poses per group
+  - group: Thor1
+    pose: Thor1Home
+  - group: Thor2
+    pose: Thor2Home

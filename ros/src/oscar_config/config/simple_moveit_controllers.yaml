@@ -1,0 +1,23 @@
+controller_list:
+  - name: thor1position
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - Thor1_Joint1
+      - Thor1_Joint2
+      - Thor1_Joint3
+      - Thor1_Joint4
+      - Thor1_Joint5
+      - Thor1_Joint6
+  - name: thor2position
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - Thor2_Joint1
+      - Thor2_Joint2
+      - Thor2_Joint3
+      - Thor2_Joint4
+      - Thor2_Joint5
+      - Thor2_Joint6

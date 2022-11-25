@@ -1,0 +1,80 @@
+thor1position:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - Thor1_Joint1
+    - Thor1_Joint2
+    - Thor1_Joint3
+    - Thor1_Joint4
+    - Thor1_Joint5
+    - Thor1_Joint6
+  gains:
+    Thor1_Joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor1_Joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor1_Joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor1_Joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor1_Joint5:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor1_Joint6:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+thor2position:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - Thor2_Joint1
+    - Thor2_Joint2
+    - Thor2_Joint3
+    - Thor2_Joint4
+    - Thor2_Joint5
+    - Thor2_Joint6
+  gains:
+    Thor2_Joint1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor2_Joint2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor2_Joint3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor2_Joint4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor2_Joint5:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Thor2_Joint6:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

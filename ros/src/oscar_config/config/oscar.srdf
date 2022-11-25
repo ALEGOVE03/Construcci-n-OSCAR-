@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="oscar">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="Thor1">
+        <joint name="Thor1_Joint1"/>
+        <joint name="Thor1_Joint2"/>
+        <joint name="Thor1_Joint3"/>
+        <joint name="Thor1_Joint4"/>
+        <joint name="Thor1_Joint5"/>
+        <joint name="Thor1_Joint6"/>
+        <joint name="Thor1_efector"/>
+    </group>
+    <group name="Thor2">
+        <joint name="Thor2_Joint1"/>
+        <joint name="Thor2_Joint2"/>
+        <joint name="Thor2_Joint3"/>
+        <joint name="Thor2_Joint4"/>
+        <joint name="Thor2_Joint5"/>
+        <joint name="Thor2_Joint6"/>
+        <joint name="Thor2_efector"/>
+    </group>
+    <group name="GripperThor1">
+        <link name="Thor1_Gripper"/>
+    </group>
+    <group name="GripperThor2">
+        <link name="Thor2_Gripper"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="Thor1Home" group="Thor1">
+        <joint name="Thor1_Joint1" value="0"/>
+        <joint name="Thor1_Joint2" value="0"/>
+        <joint name="Thor1_Joint3" value="0"/>
+        <joint name="Thor1_Joint4" value="0"/>
+        <joint name="Thor1_Joint5" value="0"/>
+        <joint name="Thor1_Joint6" value="0"/>
+    </group_state>
+    <group_state name="Thor2Home" group="Thor2">
+        <joint name="Thor2_Joint1" value="0"/>
+        <joint name="Thor2_Joint2" value="0"/>
+        <joint name="Thor2_Joint3" value="0"/>
+        <joint name="Thor2_Joint4" value="0"/>
+        <joint name="Thor2_Joint5" value="0"/>
+        <joint name="Thor2_Joint6" value="0"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="Thor1efector" parent_link="Thor1_Link6" group="GripperThor1" parent_group="Thor1"/>
+    <end_effector name="Thor2efector" parent_link="Thor2_Link6" group="GripperThor2" parent_group="Thor2"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="worldmesa" type="fixed" parent_frame="world" child_link="Mesa"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="Mesa" link2="SoporteCamara" reason="Adjacent"/>
+    <disable_collisions link1="Mesa" link2="Thor1_BaseLink" reason="Adjacent"/>
+    <disable_collisions link1="Mesa" link2="Thor1_Link1" reason="Never"/>
+    <disable_collisions link1="Mesa" link2="Thor1_Link2" reason="Never"/>
+    <disable_collisions link1="Mesa" link2="Thor1_Link3" reason="Never"/>
+    <disable_collisions link1="Mesa" link2="Thor2_BaseLink" reason="Adjacent"/>
+    <disable_collisions link1="Mesa" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Mesa" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Mesa" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor1_BaseLink" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor1_Link1" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor1_Link2" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="SoporteCamara" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor1_Link1" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor1_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor1_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link4" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_BaseLink" link2="Thor2_Link6" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link4" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_Gripper" link2="Thor1_Link6" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor1_Link2" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor1_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor1_Link4" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor1_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor1_Link6" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link4" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_Link1" link2="Thor2_Link6" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor1_Link3" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor1_Link4" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor1_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor1_Link6" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_Link2" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor1_Link4" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor1_Link5" reason="Never"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor1_Link6" reason="Never"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Link3" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor1_Link4" link2="Thor1_Link5" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link4" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link4" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Link5" link2="Thor1_Link6" reason="Adjacent"/>
+    <disable_collisions link1="Thor1_Link5" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link5" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor1_Link6" link2="Thor2_BaseLink" reason="Never"/>
+    <disable_collisions link1="Thor1_Link6" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor2_BaseLink" link2="Thor2_Link1" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_BaseLink" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor2_BaseLink" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link1" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link2" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link4" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor2_Gripper" link2="Thor2_Link6" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_Link1" link2="Thor2_Link2" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_Link1" link2="Thor2_Link3" reason="Never"/>
+    <disable_collisions link1="Thor2_Link1" link2="Thor2_Link4" reason="Never"/>
+    <disable_collisions link1="Thor2_Link1" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor2_Link1" link2="Thor2_Link6" reason="Never"/>
+    <disable_collisions link1="Thor2_Link2" link2="Thor2_Link3" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_Link2" link2="Thor2_Link4" reason="Never"/>
+    <disable_collisions link1="Thor2_Link2" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor2_Link2" link2="Thor2_Link6" reason="Never"/>
+    <disable_collisions link1="Thor2_Link3" link2="Thor2_Link4" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_Link3" link2="Thor2_Link5" reason="Never"/>
+    <disable_collisions link1="Thor2_Link3" link2="Thor2_Link6" reason="Never"/>
+    <disable_collisions link1="Thor2_Link4" link2="Thor2_Link5" reason="Adjacent"/>
+    <disable_collisions link1="Thor2_Link5" link2="Thor2_Link6" reason="Adjacent"/>
+</robot>
