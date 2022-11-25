@@ -1,0 +1,8 @@
+prefix=/home/ronald/ros_ws/install
+
+Name: oscar_config
+Description: Description of oscar_config
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
