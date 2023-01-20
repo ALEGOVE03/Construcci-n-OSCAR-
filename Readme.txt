@@ -1,1 +1,3 @@
-Este repositorio 
+Este repositorio contiene todo lo necesario para construir OSCAR según las especificaciones del LIANA, se incluyen los archivos necesarios de manufactura de las piezas. Las cuales se desarrollaron mediante impresión 3D con filamento PLAmax, además se incluyen los archivos del PCB el cual se mandó a hacer en China. Para finalizar se incluyen los archivos de programación desarrollada mediante ROS noetic usando Python.
+
+ El proyecto consiste en una plataforma robótica para hacer experimentos, cuenta con dos manipuladores THOR que se adaptaron según las necesidades del laboratorio y al ser modular cuenta con una gran flexibilidad para mejoras o cambios. Como parte de la documentación que se incluye están los planos, plan de manufactura, instrucciones de ensamble con lista de materiales y los archivos de programación documentado.  
